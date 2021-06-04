@@ -56,6 +56,8 @@
     printMessage();
 
     // Rest parameter
+    // 숫자 타입의 배열, number[] 로 표현
+    // 전달되는 모든 파라미터들: ...(배열 변수명)
     function addNumbers(...numbers: number[]): number {
         return numbers.reduce((a,b) => a + b);
     };
