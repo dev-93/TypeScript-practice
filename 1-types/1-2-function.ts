@@ -41,6 +41,7 @@
 
     printName("taenam", "KIM");
     printName("jihun");
+    printName("jihun", undefined);
     // 위에 예제서는 인자 2개를 받아야하기 때문에 에러를 발생한다.
     // 두번째 인자가 선택사항이 되게 하려면 Optional Parameter를 이용해야한다.
     // Optional Parameter(?)를 이용해서 두번째 인자에 적용하게 되면 이전 오류가 사라진다.
