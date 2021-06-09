@@ -4,7 +4,7 @@
 
 let position = { x:0, y:0 };
 
-type Direction = 'up' | 'down' | 'left' | 'right'
+type Direction = 'up' | 'down' | 'left' | 'right';
 
 function move(direction?: Direction) {
     switch(direction){
