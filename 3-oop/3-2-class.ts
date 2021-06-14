@@ -8,7 +8,7 @@
         static BEANS_GRAMM_PER_SHOT:number = 7; //class level, class와 연결이 되어있기 때문에, object 만들어질때마다 생성 X
         coffeeBeans:number = 0; //instance(object) level
 
-        constructor(coffeeBeans:number, ) {
+        constructor(coffeeBeans:number) {
             this.coffeeBeans = coffeeBeans;
         }
 
