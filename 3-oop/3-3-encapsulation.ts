@@ -43,20 +43,26 @@
     maker.fillCoffeeBean(32);
 
     class User {
-        firstName: string;
-        lastName: string;
         get fullName(): string {
             return `${this.firstName} ${this.lastName}`;
         }
+        private internalAge = 4;
 
-        constructor(firstName: string, lastName: string) {
-            this.firstName = firstName;
-            this.lastName = lastName;
+        get age(): number {
+            return this.internalAge;
         }
+
+        set age(num:number) {
+            if (num < 1) {
+                throw Error("나이는 1보다 작을 수 없습니다.");
+            }
+            this.internalAge = num;
+        }
+
+        constructor(private firstName: string, public lastName: string) {}
     }
 
     const user = new User("teanam","Kim");
-    console.log(user.fullName);
-    user.firstName="yoo";
-    console.log(user.fullName);
+    user.age = 0;
+    console.log(user);
 }
