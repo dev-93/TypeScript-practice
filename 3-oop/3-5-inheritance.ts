@@ -59,7 +59,15 @@
         }
     }
 
-    class CafeLatteMachine extends CoffeeMachine {}
+    class CafeLatteMachine extends CoffeeMachine {
+        makeCoffee(shots: number): CoffeeCup {
+            const cofffee = super.makeCoffee(shots);
+            return {
+                shots,
+                hasMilk:true,
+            }
+        }
+    }
     
     const machine = new CoffeeMachine(23);
     const latteMachine = new CafeLatteMachine(23);
