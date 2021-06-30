@@ -60,10 +60,14 @@
     }
 
     class CafeLatteMachine extends CoffeeMachine {
+        private steamMilk():void {
+            console.log("우유를 스팀하고 있습니다~~")
+        }
         makeCoffee(shots: number): CoffeeCup {
             const cofffee = super.makeCoffee(shots);
+            this.steamMilk();
             return {
-                shots,
+                ...coffee,
                 hasMilk:true,
             }
         }
