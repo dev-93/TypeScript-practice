@@ -1,7 +1,8 @@
 {
     type CoffeeCup = {
         shots:number;
-        hasMilk: boolean;
+        hasMilk?: boolean;
+        hasSugar?: boolean;
     }
 
     interface CoffeeMaker {
@@ -83,14 +84,22 @@
             return {
                 ...coffee,
                 hasMilk: false,
-                sugar: true,
+                hasSugar: true,
             }
         }
     }
     
-    const machine = new CoffeeMachine(23);
-    const latteMachine = new CafeLatteMachine(23);
+    const machines: CoffeeMaker[] = [
+        new CoffeeMachine(16),
+        new CafeLatteMachine(16),
+        new SweetCoffeeMaker(16),
+        new CoffeeMachine(16),
+        new CafeLatteMachine(16),
+        new SweetCoffeeMaker(16),
+    ];
 
-    const coffee = latteMachine.makeCoffee(1);
-    console.log(coffee);
+    machines.forEach(machine => {
+        console.log('-----------');
+        machine.makeCoffee(1);
+    })
 }
