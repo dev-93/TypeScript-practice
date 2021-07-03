@@ -42,7 +42,7 @@
         }
 
         private preheat():void {
-            console.log("데우고 있습니다");
+            console.log("커피를 데우고 있습니다");
         }
 
         private extract(shots: number): CoffeeCup {
@@ -178,4 +178,17 @@
         cheapMilkMaker,
         candySugar
     );
+   
+    const machines: CoffeeMaker[] = [
+        sweetCandyMachine,
+        sweetMachine,
+        latteMachine,
+        coldLatteMachine,
+        SweetLatteMachine,
+    ];
+
+    machines.forEach(machine => {
+        console.log('-----------');
+        machine.makeCoffee(1);
+    })
 }
