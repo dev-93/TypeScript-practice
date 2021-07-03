@@ -61,6 +61,13 @@
     }
 
     class CafeLatteMachine extends CoffeeMachine {
+        public constructor(
+            beans:number,
+            public readonly serialNumber: string
+        ) {
+            super(beans);
+        }
+
         private steamMilk():void {
             console.log("우유를 스팀하고 있습니다~~")
         }
@@ -91,10 +98,10 @@
     
     const machines: CoffeeMaker[] = [
         new CoffeeMachine(16),
-        new CafeLatteMachine(16),
+        new CafeLatteMachine(16, 's1'),
         new SweetCoffeeMaker(16),
         new CoffeeMachine(16),
-        new CafeLatteMachine(16),
+        new CafeLatteMachine(16, 's2'),
         new SweetCoffeeMaker(16),
     ];
 
