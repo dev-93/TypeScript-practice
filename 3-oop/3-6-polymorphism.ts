@@ -60,46 +60,96 @@
         }
     }
 
+    class CheapMilkSteamer {
+        private steamMilk():void {
+            console.log("우유를 스팀하고 있습니다~~")
+        }
+        
+        makeMilk(cup:CoffeeCup): CoffeeCup {
+            this.steamMilk();
+            return {
+                ...cup,
+                hasMilk: true,
+            }
+        }
+    }
+
+    class AutomaticSugarMixer {
+        private getSugar() {
+            console.log("설탕을 한 스쿱 가져오고 있습니다.");
+            return true;
+        }
+
+        addSugar(cup:CoffeeCup): CoffeeCup {
+            const sugar = this.getSugar();
+            return {
+                ...cup,
+                hasSugar: sugar,
+            }
+        }
+    }
+
     class CafeLatteMachine extends CoffeeMachine {
+        constructor(
+            beans: number,
+            public readonly serialNumber: string,
+            private milkFrother: CheapMilkSteamer
+        ) {
+            super(beans);
+        }
         private steamMilk():void {
             console.log("우유를 스팀하고 있습니다~~")
         }
         makeCoffee(shots: number): CoffeeCup {
             const coffee = super.makeCoffee(shots);
-            this.steamMilk();
-            return {
-                ...coffee,
-                hasMilk:true,
-            }
+            return this.milkFrother.makeMilk(coffee);
         }
     }
 
     class SweetCoffeeMaker extends CoffeeMachine {
-        private addSugar(): void {
-            console.log("설탕을 넣고 있어요~~!");
+        constructor(
+            private beans:number,
+            private sugar: AutomaticSugarMixer,
+        ){
+            super(beans)
         }
+        getSugar() {
+            console.log("")
+        };
 
         makeCoffee(shots: number): CoffeeCup {
             const coffee = super.makeCoffee(shots);
-            return {
-                ...coffee,
-                hasMilk: false,
-                hasSugar: true,
-            }
+            return this.sugar.addSugar(coffee);
+        }
+    }
+
+    class SweetCaffeeLatteMachine extends CoffeeMachine {
+        constructor(
+            private beans:number,
+            private sugar: AutomaticSugarMixer,
+            private milkFrother: CheapMilkSteamer
+        ) {
+            super(beans)
+        };
+
+        makeSweetCaffeeLatte(shots: number): CoffeeCup {
+            const coffee = super.makeCoffee(shots);
+            const sugarAddded = this.sugar.addSugar(coffee);
+            return this.milkFrother.makeMilk(sugarAddded);
         }
     }
     
-    const machines: CoffeeMaker[] = [
-        new CoffeeMachine(16),
-        new CafeLatteMachine(16),
-        new SweetCoffeeMaker(16),
-        new CoffeeMachine(16),
-        new CafeLatteMachine(16),
-        new SweetCoffeeMaker(16),
-    ];
+    // const machines: CoffeeMaker[] = [
+    //     new CoffeeMachine(16),
+    //     new CafeLatteMachine(16, 's1'),
+    //     new SweetCoffeeMaker(16),
+    //     new CoffeeMachine(16),
+    //     new CafeLatteMachine(16, 's2'),
+    //     new SweetCoffeeMaker(16),
+    // ];
 
-    machines.forEach(machine => {
-        console.log('-----------');
-        machine.makeCoffee(1);
-    })
+    // machines.forEach(machine => {
+    //     console.log('-----------');
+    //     machine.makeCoffee(1);
+    // })
 }
