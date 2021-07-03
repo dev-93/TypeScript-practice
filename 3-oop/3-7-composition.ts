@@ -83,10 +83,53 @@
         }
     }
 
+    class FancyMilkSteamer implements MilkFrother {
+        private steamMilk():void {
+            console.log("고급 우유를 스팀하고 있습니다~~")
+        }
+        
+        makeMilk(cup:CoffeeCup): CoffeeCup {
+            this.steamMilk();
+            return {
+                ...cup,
+                hasMilk: true,
+            }
+        }
+    }
+
+    class ColdMilkSteamer implements MilkFrother {
+        private steamMilk():void {
+            console.log("차가운 우유를 만들고 있습니다~~")
+        }
+        
+        makeMilk(cup:CoffeeCup): CoffeeCup {
+            this.steamMilk();
+            return {
+                ...cup,
+                hasMilk: true,
+            }
+        }
+    }
+
     // 설탕 제조기
     class CandySugarMixer implements SugarProvider{
         private getSugar() {
-            console.log("설탕을 한 스쿱 가져오고 있습니다.");
+            console.log("사탕을 부셔서 설탕을 가져오고 있습니다.");
+            return true;
+        }
+
+        addSugar(cup:CoffeeCup): CoffeeCup {
+            const sugar = this.getSugar();
+            return {
+                ...cup,
+                hasSugar: sugar,
+            }
+        }
+    }
+
+    class SugarMixer implements SugarProvider{
+        private getSugar() {
+            console.log("설탕병에서 설탕을 가져오고 있습니다.");
             return true;
         }
 
@@ -149,10 +192,21 @@
         }
     }
 
+    // milk
     const cheapMilkMaker = new CheapMilkSteamer();
+    const fancyMilkMaker = new FancyMilkSteamer();
+    const coldMilkMaker = new ColdMilkSteamer();
+    
+    //sugar
     const candySugar = new CandySugarMixer();
-    const sweetMachine = new SweetCoffeeMaker(12, candySugar);
+    const sugar = new SugarMixer();
+
+    //
+    const sweetCandyMachine = new SweetCoffeeMaker(12, candySugar);
+    const sweetMachine = new SweetCoffeeMaker(12, sugar);
+    
     const latteMachine = new CafeLatteMachine(12, 's22', cheapMilkMaker);
+    const coldLatteMachine = new CafeLatteMachine(12, 's22', coldMilkMaker);
     const SweetLatteMachine = new SweetCaffeeLatteMachine(
         12,
         cheapMilkMaker,
