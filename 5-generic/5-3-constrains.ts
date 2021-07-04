@@ -42,4 +42,22 @@ jihun.workPartTime();
 const taenamAfterPay = pay(taenam);
 const jihunAfterPay = pay(jihun);
 
-taenamAfterPay
+const obj = {
+    name: 'taenam',
+    age: 29,
+};
+
+const obj2 = {
+    animal: 'dog',
+};
+
+console.log(getValue(obj, 'name')); // taenam
+console.log(getValue(obj, 'age')); // 29
+console.log(getValue(obj2, 'animal')); // dog
+
+function getValue<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key];
+}
+
+// 어떠한 object 타입을 받아서, 
+// k라는 것은 object 안에있는 key들 중에 하나여야만 하고, 리턴되는 것은 object에 있는 key가 가리키고 있는 value 타입이여야 한다.
