@@ -22,7 +22,13 @@ class PartTimeEmployee implements Employee {
     }
 }
 
-function pay(employee: Employee): Employee {
+// 세부적인 타입을 인자로 받아서 정말 추상적인 타입을 다시 리턴하는 함수는 좋지 않음.
+// function payBad(employee: Employee): Employee{
+//     employee.pay();
+//     return employee;
+// }
+
+function pay<T extends Employee>(employee: T): T {
     employee.pay();
     return employee;
 }
