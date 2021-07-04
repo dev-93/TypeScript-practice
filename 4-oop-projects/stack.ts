@@ -40,9 +40,17 @@ class StackImpl implements Stack {
 }
 
 const stack = new StackImpl(10);
-stack.push("taenam 1");
-stack.push("jihun 2");
-stack.push("changhan 3");
+stack.push("test 1");
+stack.push("test 2");
+stack.push("test 3");
+stack.push("test 4");
+stack.push("test 5");
+stack.push("test 6");
+stack.push("test 7");
+stack.push("test 8");
+stack.push("test 9");
+stack.push("test 10");
+stack.push("test 11");
 
 while (stack.size !== 0) {
     console.log(stack.pop());
