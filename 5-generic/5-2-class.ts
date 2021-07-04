@@ -1,20 +1,22 @@
-interface Either {
-    left: () => number;
-    right: () => number;
+interface Either<L,R> {
+    left: () => L;
+    right: () => R;
 }
 
-class SimpleEither implements Either {
-    constructor(private leftValue: number, private rightValue: number){}
+class SimpleEither<L,R> implements Either<L,R> {
+    constructor(private leftValue: L, private rightValue: R){}
 
-    left(): number {
+    left(): L {
         return this.leftValue
     }
 
-    right(): number {
+    right(): R {
         return this.rightValue
     }
 }
 
-const either = new SimpleEither(4,5);
-console.log(either);
+const either: Either<number,number> = new SimpleEither(4,5);
 console.log(either.left(), either.right());
+
+const next = new SimpleEither({name: "taenam"}, "hello");
+console.log(next.left(), next.right());
