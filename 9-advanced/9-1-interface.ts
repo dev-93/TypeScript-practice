@@ -40,3 +40,29 @@ interface ZPositionInterface extends PositionInterface {
 }
 
 type ZPositionType = PositionType & { z: number } ;
+
+// 차이점
+// 1. interface만 결합이 된다.
+// 예를들어, 똑같은 interface의 name을 사용할 수 있다.
+
+interface PositionInterface {
+    x: number;
+    y: number;
+}
+
+interface PositionInterface {
+    z: number;
+}
+
+// type PositionType {} // error
+
+// 2. Type aliases 
+
+type Person = {
+    name: string,
+    age: number,
+};
+
+type Name = Person['name']; // string
+type NumberType = number;
+type Direction = 'left' | 'top';
