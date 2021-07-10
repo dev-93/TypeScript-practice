@@ -2,20 +2,19 @@
     type Video = {
         title: string;
         author: string;
-        description: string;
     }
 
     type Optional<T> = {
-        [P in keyof T]?: T[P] // for..in처럼 key를 도는것과 같다.
-        // P 라는 것은 T 타입의 모든 key들 중에 하나이다.
-        // T object안에 있는 key를 이용해서 value를 정의할 수 있다.
+        [P in keyof T]?: T[P];
+        // T type에 있는 모든 key들은 순차적으로 P에 할당
+        // P key는 option이고, 그 값에 type을 매핑해서 만들 수 있다.
+    }
+
+    type ReadOnly<T> = {
+        readonly [P in keyof T]: T[P];
     }
 
     type VideoOptional = Optional<Video>;
-    // Optional에 전달된 Video의 key들을 돈다.
-    const temp:VideoOptional = {
-        title: "today feeling",
-    }; 
 
     type Animal = {
         name: string,
@@ -27,7 +26,16 @@
         name: 'dog',
         type: 'mammals',
         age: 26,
-    }
+    };
+
+    animal.age = 28;
+
+    const video: ReadOnly<Video> = {
+        title: "taenams Video",
+        author: "taenam",
+    };
+
+    video.title = "taenams 19 Video"; // Error, 읽기 전용 속성이므로
 
     console.log(animal);
 }
