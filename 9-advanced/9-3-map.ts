@@ -35,7 +35,10 @@
         author: "taenam",
     };
 
-    video.title = "taenams 19 Video"; // Error, 읽기 전용 속성이므로
+    type Nullable<T> = { [P in keyof T]: T[P] | null };
 
-    console.log(animal);
+    const obj2: Nullable<Video> = {
+        title: null,
+        author: null,
+    }
 }
