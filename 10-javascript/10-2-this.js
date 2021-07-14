@@ -18,6 +18,8 @@ const counter = new Counter();
 counter.increase(); // Counter (class)
 const caller = counter.increase;
 caller(); // undefined
+const bindCaller = counter.increase.bind(counter)
+bindCaller();
 
 class Bob {};
 
