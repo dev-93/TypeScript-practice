@@ -1,7 +1,9 @@
-export default function add(a,b) {
+export function add(a,b) {
     return a + b;
 }
 
 export function min(a,b) {
     return a - b;
 }
+
+export const number = 10;
