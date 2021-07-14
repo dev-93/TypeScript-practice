@@ -18,7 +18,7 @@ const counter = new Counter();
 counter.increase(); // Counter (class)
 const caller = counter.increase;
 caller(); // undefined
-const bindCaller = counter.increase.bind(counter)
+const bindCaller = counter.increase.bind(counter); // Counter (class)
 bindCaller();
 
 class Bob {};
