@@ -9,7 +9,7 @@ test(); // Window 객체
 console.clear();
 class Counter {
     count = 0;
-    increase = function () {
+    increase = () => {
         console.log(this)
     }
 }
