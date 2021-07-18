@@ -1,3 +1,4 @@
+import { VideoComponent } from './components/page/item/video.js';
 import { TodoComponent } from './components/page/item/todo.js';
 import { NoteComponent } from './components/page/item/note.js';
 import { ImageComponent } from './components/page/item/image.js';
@@ -12,11 +13,14 @@ class App {
 		const image = new ImageComponent('Image Title', "https://picsum.photos/600/300");
 		image.attachTo(appRoot, 'beforeend');
 
-		const note = new NoteComponent("note Title", "note Contents");
+		const note = new NoteComponent("Note Title", "note Contents");
 		note.attachTo(appRoot, 'beforeend');
 
-		const todo = new TodoComponent("todo Title", "todo Item");
+		const todo = new TodoComponent("Todo Title", "todo Item");
 		todo.attachTo(appRoot, 'beforeend');
+
+		const video = new VideoComponent("Video Title", "https://youtu.be/2XouzhJ1jTU");
+		video.attachTo(appRoot, 'beforeend');
 	}
 }
 
