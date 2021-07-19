@@ -28,8 +28,8 @@ class App {
 		const imageBtn = document.querySelector("#new-image")! as HTMLButtonElement;
 		imageBtn.addEventListener('click', () => {
 			const dialog = new InputDialog();
-			const InputSection = new MediaSectionInput();
-			dialog.addChild(InputSection);
+			const inputSection = new MediaSectionInput();
+			dialog.addChild(inputSection);
 			dialog.attachTo(dialogRoot);
 
 			dialog.setOnCloseListener(() => {
@@ -37,7 +37,7 @@ class App {
 			});
 
 			dialog.setOnSubmitListener(() => {
-				const image = new ImageComponent(InputSection.title, InputSection.url);
+				const image = new ImageComponent(inputSection.title, inputSection.url);
 				this.page.addChild (image);
 				dialog.removeFrom(dialogRoot);
 			});
