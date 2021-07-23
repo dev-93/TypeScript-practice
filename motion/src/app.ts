@@ -5,10 +5,10 @@ import { NoteComponent } from './components/page/item/note.js';
 import { ImageComponent } from './components/page/item/image.js';
 import { Composable, PageComponent, PageItemComponent } from './components/page/page.js';
 import { Component } from './components/component.js';
-import { InputDialog } from './components/dialog/dialog.js';
+import { InputDialog, MediaData, TextData } from './components/dialog/dialog.js';
 import { TextSectionInput } from './components/dialog/input/text-input.js';
 
-type InputComponentConstructor<T = MediaSectionInput | TextSectionInput> = {
+type InputComponentConstructor<T = (MediaData| TextData) & Component > = {
 	new (): T;
 }
 
@@ -43,7 +43,7 @@ class App {
 		);
 	}
 
-	private bindElementToDialog<T extends MediaSectionInput | TextSectionInput>(
+	private bindElementToDialog<T extends (MediaData | TextData) & Component>(
 		selector: string,
 		InputComponent: InputComponentConstructor<T>,
 		makeSection: (input: T) => Component,
