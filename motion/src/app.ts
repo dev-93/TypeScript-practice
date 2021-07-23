@@ -44,11 +44,11 @@ class App {
 
 		this.page.addChild(new ImageComponent("Image Title", "https://picsum.photos/800/400"));
 		this.page.addChild(new VideoComponent("Video Title", "https://www.youtube.com/watch?v=WJlgGBaMQK4"));
-		this.page.addChild(new NoteComponent("Note Title", "typescript practive"));
+		this.page.addChild(new NoteComponent("Note Title", "typescript practice"));
 		this.page.addChild(new TodoComponent("Todo Title", "hello man"));
 		this.page.addChild(new ImageComponent("Image Title", "https://picsum.photos/800/400"));
 		this.page.addChild(new VideoComponent("Video Title", "https://www.youtube.com/watch?v=WJlgGBaMQK4"));
-		this.page.addChild(new NoteComponent("Note Title", "typescript practive"));
+		this.page.addChild(new NoteComponent("Note Title", "typescript practice"));
 		this.page.addChild(new TodoComponent("Todo Title", "hello man"));
 	}
 
